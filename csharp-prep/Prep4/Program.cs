@@ -32,16 +32,16 @@ class Program
         Console.WriteLine($"The average is: {average}");
 
         
-        int max = numbers[0];
+        int largestNumber = numbers[0];
 
         foreach (int number in numbers)
         {
-            if (number > max)
+            if (number > largestNumber)
             {
-                max = number;
+                largestNumber = number;
             }
         }
 
-        Console.WriteLine($"The max is: {max}");
+        Console.WriteLine($"The largest number is: {largestNumber}");
     }
 }
