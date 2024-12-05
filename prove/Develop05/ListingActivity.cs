@@ -22,7 +22,7 @@ public class ListingActivity : Activity
 
         Random rand = new Random();
         string prompt = prompts[rand.Next(prompts.Count)];
-        Console.WriteLine($"Prompt: {prompt}");
+        Console.WriteLine($"{prompt}");
         Pause(2);
 
         DateTime endTime = DateTime.Now.AddSeconds(Duration);
