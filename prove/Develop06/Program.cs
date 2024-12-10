@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.IO;
 
 class Program
@@ -8,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         User user = new User("Player");
-        string filePath = "userData.json";
+        string filePath = "objectives.txt";
 
         while (true)
         {

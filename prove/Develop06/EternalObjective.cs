@@ -15,4 +15,9 @@ public class EternalObjective : Objective
     {
         return Points;
     }
+
+    public override string Serialize()
+    {
+        return $"Eternal,{Name},{Points}";
+    }
 }

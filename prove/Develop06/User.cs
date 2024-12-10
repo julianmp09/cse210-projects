@@ -72,19 +72,46 @@ public class User
 
     public void SaveData(string filePath)
     {
-        var data = new { Name, Score, Objectives = _objectives };
-        string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(filePath, json);
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine($"{Name},{Score}");
+            foreach (var objective in _objectives)
+            {
+                writer.WriteLine(objective.Serialize());
+            }
+        }
     }
 
     public void LoadData(string filePath)
     {
         if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(filePath);
-            var data = JsonSerializer.Deserialize<dynamic>(json);
-            Name = data.Name;
-            Score = data.Score;
+            string[] lines = File.ReadAllLines(filePath);
+            string[] userInfo = lines[0].Split(',');
+            Name = userInfo[0];
+            Score = int.Parse(userInfo[1]);
+            _objectives.Clear();
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split(',');
+                switch (parts[0])
+                {
+                    case "Simple":
+                        _objectives.Add(new SimpleObjective(parts[1], int.Parse(parts[2]), bool.Parse(parts[3])));
+                        break;
+                    case "Eternal":
+                        _objectives.Add(new EternalObjective(parts[1], int.Parse(parts[2])));
+                        break;
+                    case "Checklist":
+                        _objectives.Add(new ChecklistObjective(parts[1], int.Parse(parts[2]), int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5])));
+                        break;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
         }
     }
 }

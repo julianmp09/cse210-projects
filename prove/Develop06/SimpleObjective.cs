@@ -2,11 +2,11 @@ public class SimpleObjective : Objective
 {
     public bool IsCompleted { get; private set; }
 
-    public SimpleObjective(string name, int points)
+    public SimpleObjective(string name, int points, bool isCompleted = false)
     {
         Name = name;
         Points = points;
-        IsCompleted = false;
+        IsCompleted = isCompleted;
     }
 
     public override string GetStatus()
@@ -22,5 +22,10 @@ public class SimpleObjective : Objective
             return Points;
         }
         return 0;
+    }
+
+    public override string Serialize()
+    {
+        return $"Simple,{Name},{Points},{IsCompleted}";
     }
 }
