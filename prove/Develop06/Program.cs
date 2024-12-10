@@ -7,20 +7,21 @@ class Program
     static void Main(string[] args)
     {
         User user = new User("Player");
-        string filePath = "objectives.txt";
+        string filePath = "goals.txt";
 
         while (true)
         {
             Console.Clear();
             Console.WriteLine("=== Eternal Quest ===");
-            Console.WriteLine("1. Create objective");
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("1. Create New Goal");
             Console.WriteLine("2. Register progress");
-            Console.WriteLine("3. Display objectives");
+            Console.WriteLine("3. List Goals");
             Console.WriteLine("4. Show score and level");
             Console.WriteLine("5. Save data");
             Console.WriteLine("6. Load data");
             Console.WriteLine("7. Exit");
-            Console.Write("Select an option: ");
+            Console.Write("Select a choice from the menu: ");
 
             switch (Console.ReadLine())
             {

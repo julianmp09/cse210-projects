@@ -13,14 +13,14 @@ public class User
 
     public void CreateObjective()
     {
-        Console.WriteLine("Select the type of objective:");
-        Console.WriteLine("1. Simple objective");
-        Console.WriteLine("2. Eternal objective");
-        Console.WriteLine("3. Checklist objective");
-        Console.Write("Option: ");
+        Console.WriteLine("Select the type of Goals are:");
+        Console.WriteLine("1. Simple Goal");
+        Console.WriteLine("2. Eternal Goal");
+        Console.WriteLine("3. Checklist Goal");
+        Console.Write("Which type of goal would you like to create? ");
         int choice = int.Parse(Console.ReadLine());
 
-        Console.Write("Objective name: ");
+        Console.Write("What is the name of your goal: ");
         string name = Console.ReadLine();
 
         Console.Write("Points per progress: ");
@@ -35,9 +35,9 @@ public class User
                 _objectives.Add(new EternalObjective(name, points));
                 break;
             case 3:
-                Console.Write("Required times to complete: ");
+                Console.Write("How many times does this goal need to be accomplished for a bonus? ");
                 int targetCount = int.Parse(Console.ReadLine());
-                Console.Write("Bonus points: ");
+                Console.Write("What is the amount of points associated with this goal? ");
                 int bonusPoints = int.Parse(Console.ReadLine());
                 _objectives.Add(new ChecklistObjective(name, points, targetCount, bonusPoints));
                 break;
